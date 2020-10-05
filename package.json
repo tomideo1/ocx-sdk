@@ -31,5 +31,15 @@
   "dependencies": {
     "axios": "^0.20.0",
     "lodash": "^4.17.20"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "printWidth": 200,
+    "semi": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }
