@@ -1,5 +1,5 @@
 const config = require('./config');
-
+import  ocxMethods from './src/apis/utils/utils'
 /**
  * Initialize Sdk Instance
  */
