@@ -1,0 +1,33 @@
+{
+  "name": "ocxsdk",
+  "version": "1.0.0",
+  "description": "octopus x sdk to connect to the octopusx grids and services",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "pretty-quick --staged"
+  },
+  "author": "TomideAina",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^26.5.0",
+    "husky": "^0.14.3",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
+    "@types/jest": "^22.2.3",
+    "typescript": "^3.5.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
+}
