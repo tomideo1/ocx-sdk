@@ -1,8 +1,9 @@
+import * as env from 'env-var';
 const API = {
-    baseUrl: process.env.OCX_BASE_URL,
+    baseUrl: 'sksksksk',
     timeout: 5000,
-    clientId : process.env.OCX_CLIENT_ID,
-    clientSecret : process.env.OCX_CLIENT_SECRET,
+    clientId : 'ksksksksksksk',
+    clientSecret : env.get('OCX_CLIENT_SECRET').asString(),
     
     version: 'v1'
 };

@@ -27,5 +27,8 @@ export class Sdk {
         ocxMethods.checkCredentials(this.options)
     }
 
-    
+    init(){
+        console.log(this.options)
+        return  ocxMethods.checkCredentials(this.options)
+    }
 }

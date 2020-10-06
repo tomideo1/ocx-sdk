@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
+    "env-var": "^6.3.0",
     "lodash": "^4.17.20",
     "object-assign-deep": "^0.3.1"
   },
