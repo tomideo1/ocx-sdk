@@ -21,6 +21,9 @@
     "type": "git",
     "url": "https://github.com/ekoopensource/octopusx-sdk-js.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@tomideo1"
+  },
   "devDependencies": {
     "@types/jest": "^22.2.3",
     "@types/lodash": "^4.14.161",
