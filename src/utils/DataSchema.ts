@@ -12,4 +12,4 @@ export interface Headers {
     'ocx-client-secret'?: string;
     'authorization' ?: string
 
-}
+} 

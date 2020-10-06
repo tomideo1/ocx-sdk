@@ -1,4 +1,4 @@
-const config = require('./config');
+import  config = require('./config');
 import  ocxMethods from './src/utils/utils'
 import * as dataSchemas from './src/utils/DataSchema';
 const objectAssignDeep = require(`object-assign-deep`);

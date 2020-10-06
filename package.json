@@ -12,6 +12,10 @@
   },
   "author": "TomideAina",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ekoopensource/octopusx-sdk-js.git"
+},
   "devDependencies": {
     "@types/jest": "^22.2.3",
     "@types/lodash": "^4.14.161",
@@ -36,7 +40,7 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
-    "env-var": "^6.3.0",
+    "dotenv": "^8.2.0",
     "lodash": "^4.17.20",
     "object-assign-deep": "^0.3.1"
   },
