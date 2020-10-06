@@ -1,2 +1,2 @@
 # octopusx-sdk-php
-OctopusX SDK (PHP)
+OctopusX SDK (JS)
