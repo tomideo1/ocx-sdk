@@ -15,11 +15,11 @@ export default  {
             throw new OcxExceptions('you did not provide any valid octopusx credentials');
         }
             // @ts-ignore
-            if(!args.headers.hasOwnProperty('ocx-client-id')){
+            if(!args.headers.hasOwnProperty('client_id')){
             throw new OcxExceptions('you did not provide the client id');
         }
             // @ts-ignore
-            if(!args.headers.hasOwnProperty('ocx-client-secret')){
+            if(!args.headers.hasOwnProperty('client_secret')){
             throw new OcxExceptions('you did not provide the client secret');
         }
 

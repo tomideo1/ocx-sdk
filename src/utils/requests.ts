@@ -1,12 +1,11 @@
 import axios, { AxiosRequestConfig, Method } from 'axios';
 import { Options } from './DataSchema';
 import noResponseError from './error';
-
-const request = async (method: string, path: string, options: Options, requireAuth: Boolean) => {
+const request = async (method: string, path: string, options: Options) => {
     
     const requestOptions: AxiosRequestConfig = {
         headers: options.headers,
-        baseURL: options.baseURL,
+        baseURL: process.env.OCX_BASE_URL,
         timeout: options.timeout,
         method: method as Method,
         url: path,
@@ -14,8 +13,7 @@ const request = async (method: string, path: string, options: Options, requireAu
     };
     return axios(requestOptions).then(
         response => response.data,
-        err => errorHanding(err)
-    );
+    ).catch( err => errorHanding(err));
 };
 
 function errorHanding(err: any) {
@@ -24,11 +22,12 @@ function errorHanding(err: any) {
         err.response !== undefined &&
         err.response.data !== null
     ) {
-        return Promise.reject(err.response.data);
+        return err.response.data;
     }
     let errorMessages = [];
     errorMessages.push(noResponseError(err));
-    return Promise.reject({ errors: errorMessages });
+
+    return { errors: errorMessages };
 }
 
 export default request;

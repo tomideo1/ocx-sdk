@@ -1,7 +1,9 @@
 const  config = require('./config');
 import  ocxMethods from './src/utils/utils'
 import * as dataSchemas from './src/utils/DataSchema';
+import Auth from './src/apis/Auth';
 const objectAssignDeep = require(`object-assign-deep`);
+
 /**
  * Initialize Sdk Instance
  */
@@ -18,19 +20,45 @@ export class Sdk {
     constructor(options?: dataSchemas.Options){
         const defaultOption = {
             headers: {},
-            baseUrl : config.baseUrl,
-            version: config.version,
+            version: process.env.OCX_VERSION,
             timeout: config.timeout,
             responseType: 'json',
         }
         this.options = objectAssignDeep({}, defaultOption, options);
-        ocxMethods.checkCredentials(this.options)
     }
 
+    /**
+     * Sdk Init
+     */
+
     init(){
-       ocxMethods.checkCredentials(this.options)
        return 'Sdk Initialized....'
+    }
+
+    /**
+     * Auth registration ie. buy Auth Service
+     * @param body Body of user
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    register(
+        body: dataSchemas.NewUser,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        let requestOptions = objectAssignDeep({}, this.options, options);
+        return new Auth(requestOptions).register(body);
+
+    }
+
+    login(
+        body: dataSchemas.User,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        let requestOptions = objectAssignDeep({}, this.options, options);
+        return new Auth(requestOptions).login(body);
+
     }
 }
 
-// 99c570faf2d771289b840d6345367972546867a8
