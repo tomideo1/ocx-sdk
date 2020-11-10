@@ -52,7 +52,7 @@ export class Sdk {
     }
 
     login(
-        body: dataSchemas.User,
+        body: dataSchemas.loginUser,
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)

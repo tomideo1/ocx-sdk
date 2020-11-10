@@ -8,10 +8,12 @@ export interface NewUser {
     password ?: string
 }
 
-export interface User{
+export interface loginUser{
     username ?: string,
     grant_type ?: string,
     password ?: string,
-    scope ?: string
+    scope ?: string,
+    client_id ?: string,
+    client_secret ?: string,
 }
 

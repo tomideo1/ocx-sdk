@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 
-import {NewUser,User} from './AuthSchema';
+import {NewUser,loginUser} from './ServiceSchema/AuthSchema';
+import {NewTable,NewHost,NewField} from './ServiceSchema/DataSchema';
 export interface Options extends AxiosRequestConfig {
     version?: string;
     json?: boolean;
@@ -10,11 +11,11 @@ export interface Options extends AxiosRequestConfig {
 
 export interface Headers {
     'client_id'?: string;
-    'client-secret'?: string;
+    'client_secret'?: string;
     'auth-key' ?: string
 
 } 
 
 export {
-    NewUser,User
+    NewUser,loginUser,NewHost,NewField,NewTable
 }

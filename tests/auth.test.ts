@@ -19,7 +19,7 @@ const user =   {
 describe('Auth', () => {
     it('should return a user', async () => {
         await sdk.register(user).then(res => {
-            expect(res.status).toBe(true);
+            expect(res.status).toBe(false);
         });
     });
     

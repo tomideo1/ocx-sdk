@@ -5,7 +5,7 @@ const request = async (method: string, path: string, options: Options) => {
     
     const requestOptions: AxiosRequestConfig = {
         headers: options.headers,
-        baseURL: process.env.OCX_BASE_URL,
+        baseURL: options.url,
         timeout: options.timeout,
         method: method as Method,
         url: path,
