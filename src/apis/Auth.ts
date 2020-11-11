@@ -18,8 +18,8 @@ export default class Auth {
   
     }
     async login(data: loginUser){
-        data.client_id = this.options.headers?.client_id;
-        data.client_secret = this.options.headers?.client_secret;
+        data.client_id = process.env.PASSPORT_CLIENT_ID;
+        data.client_secret = process.env.PASSPORT_CLIENT_SECRET;
         const requestOptions: Options = {
             ...this.options,
             data: data
@@ -28,7 +28,20 @@ export default class Auth {
         return request(`POST`,url, requestOptions);
     }
 
-    async createUser(data:NewUser){
+    async getUser(){
+        const requestOptions: Options = {
+            ...this.options,
+        };
+        let url = `auth/client/verify`;
+        return request(`GET`,url, requestOptions);
+    }
 
+    async createUser(data:NewUser){
+        const requestOptions: Options = {
+            ...this.options,
+            data: data
+        };
+        let url = `auth/client`;
+        return request(`POST`,url, requestOptions);
     }
 }
