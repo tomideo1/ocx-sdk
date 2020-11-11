@@ -1,7 +1,7 @@
 import { Options, NewTable, NewHost,NewField } from '../utils/DataSchema';
 import request from '../utils/requests';
 
-export default class Auth {
+export default class Data {
     options: Options;
     constructor(options:Options){
         this.options = options;
@@ -29,6 +29,14 @@ export default class Auth {
 
     }
 
+    async getHosts(){
+        const requestOptions: Options = {
+            ...this.options,
+        };
+        let url = `host/retrieve`;
+        return request(`GET`,url, requestOptions);
+    }
+
     async createField(data: NewField){
         const requestOptions: Options = {
             ...this.options,
@@ -39,6 +47,18 @@ export default class Auth {
         return request(`POST`,url, requestOptions);
     }
 
+    async getFields(tableId : String){
+        let body = {
+            table_id: tableId
+        };
+        const requestOptions: Options = {
+            ...this.options,
+            data: this.initData(body)
+        };
+        let url = `field/retrieve`;
+        return request(`POST`,url, requestOptions);
+    }
+
     async createTable(data: NewTable){
         const requestOptions: Options = {
             ...this.options,
@@ -46,6 +66,14 @@ export default class Auth {
         };
         let url = `table/create`;
         return request(`POST`,url, requestOptions);
+    }
+
+    async getTables(){
+        const requestOptions: Options = {
+            ...this.options,
+        };
+        let url = `table/retrieve`;
+        return request(`GET`,url, requestOptions);
     }
 
 

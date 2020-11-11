@@ -41,7 +41,7 @@ export class Sdk {
     }
 
     /**
-     * Auth registration ie. buy Auth Service
+     * Auth registration
      * @param body Body of user
      * @param options Optional. Set options for HTTP requests
      */
@@ -57,7 +57,7 @@ export class Sdk {
     }
 
     /**
-     * Auth Login ie. buy Auth Service
+     * Auth Login
      * @param body Body of loginUser
      * @param options Optional. Set options for HTTP requests
      */
@@ -74,7 +74,7 @@ export class Sdk {
 
 
     /**
-     * Auth Login ie. buy Auth Service
+     * Auth Login
      * @param body Body of loginUser
      * @param options Optional. Set options for HTTP requests
      */
@@ -87,7 +87,7 @@ export class Sdk {
     getAuthUser(
         options?: dataSchemas.Options
     ){
-
+        ocxMethods.checkCredentials(this.options)
         let requestOptions = objectAssignDeep({}, this.options, options);
         return new Auth(requestOptions).getUser();
 
@@ -95,7 +95,7 @@ export class Sdk {
 
 
     /**
-     * Auth Create Client User  ie. buy Auth Service
+     * Auth Create Client User
      * @param body Body of NewUsers
      * @param options Optional. Set options for HTTP requests
      */
@@ -113,7 +113,7 @@ export class Sdk {
 
 
     /**
-     * Data Host Creation ie. buy Data  Service
+     * Data Host Creation
      * @param body Body of hostData
      * @param options Optional. Set options for HTTP requests
      */
@@ -127,9 +127,22 @@ export class Sdk {
         return new Data(requestOptions).createHost(body);
     }
 
+    /**
+     * Data Fetch All Data Hosts
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async getDataHosts(
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        let requestOptions = objectAssignDeep({}, this.options, options);
+        return new Data(requestOptions).getHosts();
+    }
+
 
     /**
-     * Data Table Creation ie. buy Data  Service
+     * Data Table Creation
      * @param body Body of hostData
      * @param options Optional. Set options for HTTP requests
      */
@@ -143,20 +156,50 @@ export class Sdk {
         return new Data(requestOptions).createTable(body);
     }
 
+    /**
+     * Data Fetch All Data Tables
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async getDataTables(
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        let requestOptions = objectAssignDeep({}, this.options, options);
+        return new Data(requestOptions).getTables();
+    }
+
 
     /**
-     * Data Field Creation ie. buy Data  Service
+     * Data Field Creation
      * @param body Body of hostData
      * @param options Optional. Set options for HTTP requests
      */
 
-    async createDataFields(
+    async createDataField(
         body: dataSchemas.NewField,
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
         let requestOptions = objectAssignDeep({}, this.options, options);
-        return new Data(requestOptions).createTable(body);
+        return new Data(requestOptions).createField(body);
     }
+
+
+    /**
+     * Data Fetch All Data Fields
+     * @param tableId
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async getDataFields(
+        tableId: String,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        let requestOptions = objectAssignDeep({}, this.options, options);
+        return new Data(requestOptions).getFields(tableId);
+    }
+
 }
 
