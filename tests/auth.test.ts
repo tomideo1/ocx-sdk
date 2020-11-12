@@ -5,6 +5,7 @@ const headers = {
     'client_secret': process.env.OCX_CLIENT_SECRET,
     'auth-key': `Bearer tokenString`,
 }
+const config = require('../config');
 
 const sdk = new Sdk({headers});
 const newUser =   {
@@ -45,14 +46,14 @@ describe('Auth', () => {
             expect(res.OCXPayload).toHaveProperty('client_secret');
             // expect(res.OCXPayload).toHaveProperty('octopusx_secret');
             done();
-        });
+        },config.timeout);
     });
 
     it('should return true if login successfully', async done => {
         await sdk.login(LoginUser).then(res => {
             expect(res).toHaveProperty('access_token');
             done();
-        });
+        },config.timeout);
     });
 
     it('should create a client ocx-sdk user ', async done => {
@@ -61,6 +62,6 @@ describe('Auth', () => {
             expect(res.OCXPayload).toHaveProperty('client_id');
             expect(res.OCXPayload.status).toBe(true);
             done();
-        });
-    });
+        },config.timeout);
+    },);
 });
