@@ -24,7 +24,7 @@
 
     const client = new Ocx(options)
 
-See [requests](https://op-develsoper.fi/docs/#user-content-requests) for required headers.
+
 
 You can set request options for client instance, and also for each request function call, which is useful because you can then use global instance of SDK client, with globally defined x-api-key, but still give separate x-authorization header for each user:
 
