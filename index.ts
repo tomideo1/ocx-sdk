@@ -4,6 +4,7 @@ const  config = require('./config');
 import  ocxMethods from './src/utils/utils'
 import * as dataSchemas from './src/utils/DataSchema';
 import Auth from './src/apis/Auth';
+import Profile from "./src/apis/Profile";
 const objectAssignDeep = require(`object-assign-deep`);
 
 /**
@@ -39,6 +40,12 @@ export class Sdk {
     init(){
        return 'Sdk Initialized....'
     }
+
+
+
+    /**
+     * AUTH SERVICES START
+     */
 
     /**
      * Auth registration
@@ -109,7 +116,16 @@ export class Sdk {
         return new Data(requestOptions).createHost(body);
     }
 
+    /**
+     * AUTH SERVICES END
+     */
 
+
+
+
+    /**
+     * DATA SERVICES START
+     */
 
     /**
      * DB Initial  Setup
@@ -216,6 +232,111 @@ export class Sdk {
         let requestOptions = objectAssignDeep({}, this.options, options);
         return new Data(requestOptions).getFields(tableId);
     }
+
+    /**
+     * DATA SERVICES END
+     */
+
+
+
+
+
+    /**
+     * PROFILE SERVICES START
+     */
+
+    /**
+     * Profile Type Creation
+     * @param body Body of ProfileType
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async createProfileType(
+        body: dataSchemas.ProfileType,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        let requestOptions = objectAssignDeep({}, this.options, options);
+        return new Profile(requestOptions).createProfileType(body);
+    }
+
+    /**
+     * Data Fetch All Profile Types
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async getProfileTypes(
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        let requestOptions = objectAssignDeep({}, this.options, options);
+        return new Profile(requestOptions).getProfileTypes();
+    }
+
+
+    /**
+     * Profile Field Creation
+     * @param body Body of ProfileFields
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async createProfileField(
+        body: dataSchemas.ProfileFields,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        let requestOptions = objectAssignDeep({}, this.options, options);
+        return new Profile(requestOptions).createProfileFields(body);
+    }
+
+    /**
+     * Data Fetch All Profile Fields
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async getProfileFields(
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        let requestOptions = objectAssignDeep({}, this.options, options);
+        return new Profile(requestOptions).getProfileFields();
+    }
+
+
+
+    /**
+     * Profile Records Creation
+     * @param body Body of ProfileRecords
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async createProfileRecords(
+        body: dataSchemas.ProfileRecords,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        let requestOptions = objectAssignDeep({}, this.options, options);
+        return new Profile(requestOptions).createProfileRecords(body);
+    }
+
+    /**
+     * Data Fetch All Profile Records
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async getProfileRecords(
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        let requestOptions = objectAssignDeep({}, this.options, options);
+        return new Profile(requestOptions).getProfileRecords();
+    }
+
+
+
+    /**
+     * PROFILE SERVICES END
+     */
 
 
 

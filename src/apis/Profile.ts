@@ -22,7 +22,42 @@ export default class Profile {
         const requestOptions: Options = {
             ...this.options,
         };
-        let url = `table/retrieve`;
+        let url = `ProfileType`;
+        return request(`GET`,url, requestOptions);
+    }
+
+    async createProfileRecords(data: ProfileRecords){
+        const requestOptions: Options = {
+            ...this.options,
+            data: data
+        };
+        let url = `ProfileRecord/add/profilerecords`;
+        return request(`POST`,url, requestOptions);
+    }
+
+    async getProfileRecords(){
+        const requestOptions: Options = {
+            ...this.options,
+        };
+        let url = `ProfileRecord`;
+        return request(`GET`,url, requestOptions);
+    }
+
+    async createProfileFields(data: ProfileFields){
+        const requestOptions: Options = {
+            ...this.options,
+            data: data
+        };
+        let url = `ProfileRecord/add/profilerecords`;
+        return request(`POST`,url, requestOptions);
+    }
+
+
+    async getProfileFields(){
+        const requestOptions: Options = {
+            ...this.options,
+        };
+        let url = `ProfileField/add/profilefields`;
         return request(`GET`,url, requestOptions);
     }
 }
