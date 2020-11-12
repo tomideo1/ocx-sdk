@@ -37,6 +37,7 @@ const LoginUser = {
     'client_secret': process.env.PASSPORT_CLIENT_SECRET,
 
 }
+//
 
 describe('Auth', () => {
     it('should return a user', async  done => {
