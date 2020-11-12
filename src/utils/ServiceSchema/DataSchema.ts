@@ -1,12 +1,12 @@
 export interface NewHost {
-    domain_id ?: string,
+    domain_id ?: number,
     host_name ?: string,
     host ?: string,
     port ?: number,
     driver ?: string,
     database ?: string,
     username ?: string
-    password ?: string
+    password ?: any
 }
 
 export interface NewTable{
@@ -14,7 +14,7 @@ export interface NewTable{
     host_name ?: string,
     table_name ?: string,
     visibility ?: boolean,
-    fields ?: NewField
+    fields ?: NewField[]
 }
 
 export interface NewField{

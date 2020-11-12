@@ -17,6 +17,16 @@ export default class Auth {
         return request(`POST`,url, requestOptions);
   
     }
+
+    async registerClientUser(data: NewUser){
+        const requestOptions: Options = {
+            ...this.options,
+            data: data
+        };
+        let url = `auth/user/add`;
+        return request(`POST`,url, requestOptions);
+
+    }
     async login(data: loginUser){
         data.client_id = process.env.PASSPORT_CLIENT_ID;
         data.client_secret = process.env.PASSPORT_CLIENT_SECRET;

@@ -108,12 +108,12 @@ export class Sdk {
      */
 
     async createAuthClientUser(
-        body: dataSchemas.NewHost,
+        body: dataSchemas.NewUser,
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
         let requestOptions = objectAssignDeep({}, this.options, options);
-        return new Data(requestOptions).createHost(body);
+        return new Auth(requestOptions).createUser(body);
     }
 
     /**
@@ -205,16 +205,18 @@ export class Sdk {
     /**
      * Data Field Creation
      * @param body Body of hostData
+     * @param tableName
      * @param options Optional. Set options for HTTP requests
      */
 
     async createDataField(
         body: dataSchemas.NewField,
+        tableName: string,
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
         let requestOptions = objectAssignDeep({}, this.options, options);
-        return new Data(requestOptions).createField(body);
+        return new Data(requestOptions).createField(body,tableName);
     }
 
 

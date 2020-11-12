@@ -8,7 +8,7 @@ export default class Data {
         this.options.url = process.env.OCX_DATA_BASE_URL
     }
 
-    async initData(payload: Object) {
+     initData(payload: Object) {
         return {
             "OCX Schema": this.options.version,
             "OCXType": "Request",
@@ -31,10 +31,12 @@ export default class Data {
 
 
     async createHost(data: NewHost){
-
+        let body = {
+            host_data : data
+        };
         const requestOptions: Options = {
             ...this.options,
-            data: this.initData(data)
+            data: this.initData(body)
         };
         let url = `host/create`;
         return request(`POST`,url, requestOptions);
@@ -49,10 +51,14 @@ export default class Data {
         return request(`GET`,url, requestOptions);
     }
 
-    async createField(data: NewField){
+    async createField(data: NewField, tableName: string){
+        let body = {
+            "table_name" : tableName,
+            "field_data" : data
+        };
         const requestOptions: Options = {
             ...this.options,
-            data: this.initData(data)
+            data: this.initData(body)
         };
 
         let url = `field/create`;
