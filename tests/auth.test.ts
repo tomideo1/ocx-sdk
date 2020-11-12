@@ -46,15 +46,15 @@ describe('Auth', () => {
             expect(res.OCXPayload).toHaveProperty('client_secret');
             // expect(res.OCXPayload).toHaveProperty('octopusx_secret');
             done();
-        },config.timeout);
-    });
+        });
+    },config.timeout);
 
     it('should return true if login successfully', async done => {
         await sdk.login(LoginUser).then(res => {
             expect(res).toHaveProperty('access_token');
             done();
-        },config.timeout);
-    });
+        });
+    },config.timeout);
 
     it('should create a client ocx-sdk user ', async done => {
         await sdk.createAuthClientUser(sdkUser).then(res => {
@@ -62,6 +62,6 @@ describe('Auth', () => {
             expect(res.OCXPayload).toHaveProperty('client_id');
             expect(res.OCXPayload.status).toBe(true);
             done();
-        },config.timeout);
-    },);
+        });
+    },config.timeout);
 });

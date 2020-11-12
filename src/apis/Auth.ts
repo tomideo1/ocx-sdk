@@ -11,7 +11,7 @@ export default class Auth {
   async register(data: NewUser) {
     const requestOptions: Options = {
       ...this.options,
-      data: data
+      data
     };
     const url = `auth/user/add`;
     return request(`POST`, url, requestOptions);
@@ -20,7 +20,7 @@ export default class Auth {
   async registerClientUser(data: NewUser) {
     const requestOptions: Options = {
       ...this.options,
-      data: data
+      data
     };
     const url = `auth/user/add`;
     return request(`POST`, url, requestOptions);
@@ -30,7 +30,7 @@ export default class Auth {
     data.client_secret = process.env.PASSPORT_CLIENT_SECRET;
     const requestOptions: Options = {
       ...this.options,
-      data: data
+      data
     };
     const url = `auth/login/token`;
     return request(`POST`, url, requestOptions);
@@ -47,7 +47,7 @@ export default class Auth {
   async createUser(data: NewUser) {
     const requestOptions: Options = {
       ...this.options,
-      data: data
+      data
     };
     const url = `auth/client`;
     return request(`POST`, url, requestOptions);

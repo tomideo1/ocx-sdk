@@ -11,7 +11,7 @@ export default class Profile {
   async createProfileType(data: ProfileType) {
     const requestOptions: Options = {
       ...this.options,
-      data: data
+      data
     };
     const url = `ProfileType/add/proficonstypes`;
     return request(`POST`, url, requestOptions);
@@ -28,7 +28,7 @@ export default class Profile {
   async createProfileRecords(data: ProfileRecords) {
     const requestOptions: Options = {
       ...this.options,
-      data: data
+      data
     };
     const url = `ProfileRecord/add/profilerecords`;
     return request(`POST`, url, requestOptions);
@@ -45,7 +45,7 @@ export default class Profile {
   async createProfileFields(data: ProfileFields) {
     const requestOptions: Options = {
       ...this.options,
-      data: data
+      data
     };
     const url = `ProfileRecord/add/profilerecords`;
     return request(`POST`, url, requestOptions);
@@ -62,7 +62,7 @@ export default class Profile {
   async createProfileData(data: ProfileData) {
     const requestOptions: Options = {
       ...this.options,
-      data: data
+      data
     };
     const url = `ProfileData/add/profiledata`;
     return request(`POST`, url, requestOptions);

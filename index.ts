@@ -1,5 +1,5 @@
 import Data from "./src/apis/Data";
-
+/* tslint:disable */
 const  config = require('./config');
 import  ocxMethods from './src/utils/utils'
 import * as dataSchemas from './src/utils/DataSchema';
