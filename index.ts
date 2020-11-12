@@ -111,6 +111,22 @@ export class Sdk {
 
 
 
+    /**
+     * DB Initial  Setup
+     * @param domainId
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async setupDataChannels(
+       domainId: String,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        let requestOptions = objectAssignDeep({}, this.options, options);
+        return new Data(requestOptions).setUp(domainId);
+    }
+
+
 
     /**
      * Data Host Creation
@@ -200,6 +216,8 @@ export class Sdk {
         let requestOptions = objectAssignDeep({}, this.options, options);
         return new Data(requestOptions).getFields(tableId);
     }
+
+
 
 }
 

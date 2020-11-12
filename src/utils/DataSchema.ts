@@ -2,6 +2,7 @@ import { AxiosRequestConfig } from 'axios';
 
 import {NewUser,loginUser} from './ServiceSchema/AuthSchema';
 import {NewTable,NewHost,NewField} from './ServiceSchema/DataSchema';
+import {ProfileType,ProfileFields,ProfileRecords} from './ServiceSchema/ProfileSchema';
 export interface Options extends AxiosRequestConfig {
     version?: string;
     json?: boolean;
@@ -16,5 +17,12 @@ export interface Headers {
 } 
 
 export {
-    NewUser,loginUser,NewHost,NewField,NewTable
+    NewUser,
+    loginUser,
+    NewHost,
+    NewField,
+    NewTable,
+    ProfileFields,
+    ProfileRecords,
+    ProfileType
 }

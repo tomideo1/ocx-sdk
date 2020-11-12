@@ -1,4 +1,4 @@
-import { Options, NewUser, loginUser } from '../utils/DataSchema';
+import { Options, ProfileType, ProfileRecords,ProfileFields } from '../utils/DataSchema';
 import request from '../utils/requests';
 
 export default class Profile {
@@ -8,13 +8,21 @@ export default class Profile {
         this.options.url = process.env.OCX_PROFILE_BASE_URL;
     }
 
-    async register(data: NewUser){
+    async createProfileType(data: ProfileType){
         const requestOptions: Options = {
             ...this.options,
             data: data
         };
-        let url = `auth/user/add`;
+        let url = `ProfileType/add/profiletypes`;
         return request(`POST`,url, requestOptions);
 
+    }
+
+    async getProfileTypes(){
+        const requestOptions: Options = {
+            ...this.options,
+        };
+        let url = `table/retrieve`;
+        return request(`GET`,url, requestOptions);
     }
 }

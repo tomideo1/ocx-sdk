@@ -17,6 +17,18 @@ export default class Data {
         }
     }
 
+    async setUp(domainId: String){
+        let body = {
+            domain_id:domainId
+        }
+        const requestOptions: Options = {
+            ...this.options,
+            data: this.initData(body)
+        };
+        let url = `host/create`;
+        return request(`POST`,url, requestOptions);
+    }
+
 
     async createHost(data: NewHost){
 

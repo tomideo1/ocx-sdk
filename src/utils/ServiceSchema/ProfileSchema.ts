@@ -1,26 +1,17 @@
-export interface NewHost {
+export interface ProfileType {
     domain_id ?: string,
-    host_name ?: string,
-    host ?: string,
-    port ?: number,
-    driver ?: string,
-    database ?: string,
-    username ?: string
-    password ?: string
+    type ?: string,
+    title ?: string,
 }
 
-export interface NewTable{
-    database_type ?: string,
-    host_name ?: string,
-    table_name ?: string,
-    visibility ?: boolean,
-    fields ?: NewField
+export interface ProfileRecords {
+    domain_id ?: string,
+    profile_data_id ?: string,
+    type ?: string,
+    "title": string,
 }
-
-export interface NewField{
-    field_name ?: string,
-    field_type ?: string,
-    visibility ?: boolean,
-    nullable ?: boolean
+export interface ProfileFields {
+    domain_id ?: string,
+    profile_types_id ?: string,
+    "title": string,
 }
-
