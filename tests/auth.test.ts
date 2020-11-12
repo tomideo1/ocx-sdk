@@ -27,7 +27,7 @@ const sdkUser =   {
     "phone": "0805423789"
 };
 
-const loginUser = {
+const LoginUser = {
     "username": newUser.email,
     "password": "testing",
     "grant_type" : "password",
@@ -49,7 +49,7 @@ describe('Auth', () => {
     });
 
     it('should return true if login successfully', async done => {
-        await sdk.login(loginUser).then(res => {
+        await sdk.login(LoginUser).then(res => {
             expect(res).toHaveProperty('access_token');
             done();
         });

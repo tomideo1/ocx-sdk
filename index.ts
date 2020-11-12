@@ -58,23 +58,23 @@ export class Sdk {
         options?: dataSchemas.Options
     ){
 
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Auth(requestOptions).register(body);
 
     }
 
     /**
      * Auth Login
-     * @param body Body of loginUser
+     * @param body Body of LoginUser
      * @param options Optional. Set options for HTTP requests
      */
 
     login(
-        body: dataSchemas.loginUser,
+        body: dataSchemas.LoginUser,
         options?: dataSchemas.Options
     ){
 
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Auth(requestOptions).login(body);
 
     }
@@ -82,7 +82,7 @@ export class Sdk {
 
     /**
      * Auth Login
-     * @param body Body of loginUser
+     * @param body Body of LoginUser
      * @param options Optional. Set options for HTTP requests
      */
 
@@ -95,7 +95,7 @@ export class Sdk {
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Auth(requestOptions).getUser();
 
     }
@@ -112,7 +112,7 @@ export class Sdk {
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Auth(requestOptions).createUser(body);
     }
 
@@ -134,11 +134,11 @@ export class Sdk {
      */
 
     async setupDataChannels(
-       domainId: String,
+       domainId: string,
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Data(requestOptions).setUp(domainId);
     }
 
@@ -155,7 +155,7 @@ export class Sdk {
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Data(requestOptions).createHost(body);
     }
 
@@ -168,7 +168,7 @@ export class Sdk {
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Data(requestOptions).getHosts();
     }
 
@@ -184,7 +184,7 @@ export class Sdk {
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Data(requestOptions).createTable(body);
     }
 
@@ -197,7 +197,7 @@ export class Sdk {
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Data(requestOptions).getTables();
     }
 
@@ -215,7 +215,7 @@ export class Sdk {
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Data(requestOptions).createField(body,tableName);
     }
 
@@ -227,11 +227,11 @@ export class Sdk {
      */
 
     async getDataFields(
-        tableId: String,
+        tableId: string,
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Data(requestOptions).getFields(tableId);
     }
 
@@ -258,7 +258,7 @@ export class Sdk {
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Profile(requestOptions).createProfileType(body);
     }
 
@@ -271,7 +271,7 @@ export class Sdk {
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Profile(requestOptions).getProfileTypes();
     }
 
@@ -287,7 +287,7 @@ export class Sdk {
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Profile(requestOptions).createProfileFields(body);
     }
 
@@ -300,7 +300,7 @@ export class Sdk {
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Profile(requestOptions).getProfileFields();
     }
 
@@ -317,7 +317,7 @@ export class Sdk {
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Profile(requestOptions).createProfileRecords(body);
     }
 
@@ -330,8 +330,37 @@ export class Sdk {
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
-        let requestOptions = objectAssignDeep({}, this.options, options);
+        const requestOptions = objectAssignDeep({}, this.options, options);
         return new Profile(requestOptions).getProfileRecords();
+    }
+
+    /**
+     * Profile Data Creation
+     * @param body Body of ProfileData
+     * @param options Optional. Set options for HTTP requests
+     */
+
+
+    async createProfileData(
+        body: dataSchemas.ProfileData,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Profile(requestOptions).createProfileData(body);
+    }
+
+    /**
+     * Data Fetch All Profile Datas
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async getProfileDatas(
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Profile(requestOptions).getAllProfileData();
     }
 
 
