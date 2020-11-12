@@ -2,7 +2,7 @@
   "name": "ocx-sdk-js",
   "version": "1.0.0",
   "description": "octopus x sdk to connect to the octopusx grids and services",
-  "main": "./index",
+  "main": "./index.ts",
   "directories": {
     "test": "tests"
   },
@@ -23,9 +23,10 @@
     "url": "https://github.com/tomideo1"
   },
   "license": "MIT",
+  "keywords": ["OctopusX", "Sdk"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ekoopensource/octopusx-sdk-js.git"
+    "url": "https://github.com/tomideo1/ocx-sdk.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@tomideo1"

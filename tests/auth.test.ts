@@ -55,7 +55,7 @@ describe('Auth', () => {
         });
     });
 
-    it('should create a client sdk user ', async done => {
+    it('should create a client ocx-sdk user ', async done => {
         await sdk.createAuthClientUser(sdkUser).then(res => {
             expect(res.OCXPayload).toHaveProperty('client_secret');
             expect(res.OCXPayload).toHaveProperty('client_id');
