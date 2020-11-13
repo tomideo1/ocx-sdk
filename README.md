@@ -12,7 +12,7 @@
 
 ## Usage
 
-    import Ocx from "ocx-sdk-js";
+    import Sdk from "ocx-sdk-js";
 
     const options = {
         headers: {
@@ -22,7 +22,7 @@
         }
     }
 
-    const client = new Ocx(options)
+    const client = new Sdk(options)
 
 
 
