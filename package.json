@@ -1,8 +1,8 @@
 {
   "name": "ocx-sdk-js",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "octopus x sdk to connect to the octopusx grids and services",
-  "main": "./index.ts",
+  "main": "./build/index.js",
   "directories": {
     "test": "tests"
   },
