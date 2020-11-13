@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Octopusx Sdk
 
 [![Build Status](https://travis-ci.org/op-developer/op-api-javascript-sdk.svg?branch=master)](https://travis-ci.org/op-developer/op-api-javascript-sdk)
@@ -34,7 +33,3 @@ const auth = await client.register(userData);
 
 
 
-=======
-# ocx-sdk
-Sdk for OctopusX
->>>>>>> 9574673ea9792edbba3aff66478b491ab1123291
