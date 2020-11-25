@@ -5,6 +5,7 @@ export interface NewUser {
   gender?: string;
   phone?: string;
   email?: string;
+  role?: string;
   password?: string;
 }
 

@@ -23,8 +23,8 @@ export class Sdk {
     constructor(options?: dataSchemas.Options){
         const defaultOption = {
             headers: {
-                client_id : process.env.OCX_CLIENT_ID,
-                client_secret : process.env.OCX_CLIENT_SECRET
+                client_id : process.env.OCX_CLIENT_ID ||process.env.VUE_APP_OCX_CLIENT_ID ,
+                client_secret : process.env.OCX_CLIENT_SECRET || process.env.VUE_APP_OCX_CLIENT_SECRET
             },
             version: process.env.OCX_VERSION,
             timeout: config.timeout,
@@ -247,6 +247,21 @@ export class Sdk {
      * PROFILE SERVICES START
      */
 
+    
+    /**
+     * Setup Profile
+    * @param options Optional. Set options for HTTP requests
+     */
+
+    async profileInit(
+         options?: dataSchemas.Options
+    ) {
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Profile(requestOptions).setupProfile();
+        
+    }
+
     /**
      * Profile Type Creation
      * @param body Body of ProfileType
@@ -334,6 +349,9 @@ export class Sdk {
         return new Profile(requestOptions).getProfileRecords();
     }
 
+
+
+
     /**
      * Profile Data Creation
      * @param body Body of ProfileData
@@ -341,27 +359,8 @@ export class Sdk {
      */
 
 
-    async createProfileData(
-        body: dataSchemas.ProfileData,
-        options?: dataSchemas.Options
-    ){
-        ocxMethods.checkCredentials(this.options)
-        const requestOptions = objectAssignDeep({}, this.options, options);
-        return new Profile(requestOptions).createProfileData(body);
-    }
 
-    /**
-     * Data Fetch All Profile Datas
-     * @param options Optional. Set options for HTTP requests
-     */
-
-    async getProfileDatas(
-        options?: dataSchemas.Options
-    ){
-        ocxMethods.checkCredentials(this.options)
-        const requestOptions = objectAssignDeep({}, this.options, options);
-        return new Profile(requestOptions).getAllProfileData();
-    }
+ 
 
 
 

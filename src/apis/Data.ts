@@ -5,7 +5,7 @@ export default class Data {
   options: Options;
   constructor(options: Options) {
     this.options = options;
-    this.options.url = process.env.OCX_DATA_BASE_URL;
+    this.options.url = process.env.OCX_DATA_BASE_URL || process.env.VUE_APP_OCX_DATA_BASE_URL;
   }
 
   initData(payload: object) {

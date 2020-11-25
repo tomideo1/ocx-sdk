@@ -6,7 +6,8 @@ export interface ProfileType {
 
 export interface ProfileRecords {
   domain_id?: string;
-  profile_data_id?: string;
+  profile_type_id?: string;
+  auth_id?: string;
   type?: string;
   title: string;
 }

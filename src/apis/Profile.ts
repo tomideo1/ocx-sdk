@@ -5,7 +5,7 @@ export default class Profile {
   options: Options;
   constructor(options: Options) {
     this.options = options;
-    this.options.url = process.env.OCX_PROFILE_BASE_URL;
+    this.options.url = process.env.OCX_PROFILE_BASE_URL || process.env.VUE_APP_OCX_PROFILE_BASE_URL;
   }
 
   async createProfileType(data: ProfileType) {
@@ -13,7 +13,7 @@ export default class Profile {
       ...this.options,
       data
     };
-    const url = `ProfileType/add/proficonstypes`;
+    const url = `ProfileType/add`;
     return request(`POST`, url, requestOptions);
   }
 
@@ -30,7 +30,7 @@ export default class Profile {
       ...this.options,
       data
     };
-    const url = `ProfileRecord/add/profilerecords`;
+    const url = `ProfileRecord/add`;
     return request(`POST`, url, requestOptions);
   }
 
@@ -47,7 +47,7 @@ export default class Profile {
       ...this.options,
       data
     };
-    const url = `ProfileRecord/add/profilerecords`;
+    const url = `ProfileRecord/add`;
     return request(`POST`, url, requestOptions);
   }
 
@@ -55,7 +55,7 @@ export default class Profile {
     const requestOptions: Options = {
       ...this.options
     };
-    const url = `ProfileField/add/profilefields`;
+    const url = `ProfileField`;
     return request(`GET`, url, requestOptions);
   }
 
@@ -73,6 +73,14 @@ export default class Profile {
       ...this.options
     };
     const url = `ProfileData`;
+    return request(`GET`, url, requestOptions);
+  }
+
+  async setupProfile() {
+      const requestOptions: Options = {
+      ...this.options
+    };
+    const url = `ProfileSetup`;
     return request(`GET`, url, requestOptions);
   }
 }

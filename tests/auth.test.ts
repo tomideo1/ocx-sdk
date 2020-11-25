@@ -15,6 +15,7 @@ const newUser =   {
     "lastname": "soke",
     "profile_id": 1,
     "gender": "male",
+    "role" : "1",
     "phone": "0805423789"
 };
 
@@ -43,24 +44,24 @@ describe('Auth', () => {
     it('should return a user', async  done => {
         await sdk.register(newUser).then(res => {
             expect(res.OCXPayload.status).toBe(true);
-            expect(res.OCXPayload).toHaveProperty('token');
-            expect(res.OCXPayload).toHaveProperty('client_secret');
-            // expect(res.OCXPayload).toHaveProperty('octopusx_secret');
+            expect(res.OCXPayload.data).toHaveProperty('token');
+            expect(res.OCXPayload.data).toHaveProperty('client_secret');
+            expect(res.OCXPayload.data).toHaveProperty('octopusx_secret');
             done();
         });
     },config.timeout);
 
-    it('should return true if login successfully', async done => {
-        await sdk.login(LoginUser).then(res => {
-            expect(res).toHaveProperty('access_token');
-            done();
-        });
-    },config.timeout);
+    // it('should return true if login successfully', async done => {
+    //     await sdk.login(LoginUser).then(res => {
+    //         expect(res).toHaveProperty('access_token');
+    //         done();
+    //     });
+    // },config.timeout);
 
     it('should create a client ocx-sdk user ', async done => {
         await sdk.createAuthClientUser(sdkUser).then(res => {
-            expect(res.OCXPayload).toHaveProperty('client_secret');
-            expect(res.OCXPayload).toHaveProperty('client_id');
+            expect(res.OCXPayload.data).toHaveProperty('client_secret');
+            expect(res.OCXPayload.data).toHaveProperty('client_id');
             expect(res.OCXPayload.status).toBe(true);
             done();
         });
