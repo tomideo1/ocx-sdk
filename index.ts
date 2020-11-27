@@ -362,7 +362,7 @@ export class Sdk {
     
 
     /**
-     * Data Services Start
+     * Acess Services Start
      */
 
     
@@ -395,7 +395,7 @@ export class Sdk {
 
 
     /**
-     * Access Service Setup 
+     * Access Service Create Request 
      * @param options Optional. Set options for HTTP requests
      * @param body Body for a new Access Service Request Registration
      */
@@ -408,9 +408,25 @@ export class Sdk {
         const requestOptions = objectAssignDeep({}, this.options, options);
         return new Access(requestOptions).registerRequest(body);
     }
+
+
+    /**
+     * Access Service Unregister Request 
+     * @param options Optional. Set options for HTTP requests
+     * @param body Body for a new Access Service Request Registration
+     */
+
+    async AccessUnregisterRequest(
+        body: dataSchemas.NewRequest,
+        options?: dataSchemas.Options,
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Access(requestOptions).unRegisterRequest(body);
+    }
     
      /**
-     * Data Services End
+     * Access Services End
      */
 
 
