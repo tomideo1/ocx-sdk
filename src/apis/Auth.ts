@@ -27,7 +27,9 @@ export default class Auth {
   }
   async login(data: LoginUser) {
     data.client_id = process.env.PASSPORT_CLIENT_ID || process.env.VUE_APP_PASSPORT_CLIENT_ID;
-    data.client_secret = process.env.PASSPORT_CLIENT_SECRET ||  process.env.VUE_APP_PASSPORT_CLIENT_SECRET;
+    data.client_secret = process.env.PASSPORT_CLIENT_SECRET || process.env.VUE_APP_PASSPORT_CLIENT_SECRET;
+    data.grant_type = "password",
+      data.scope = "";
     const requestOptions: Options = {
       ...this.options,
       data
