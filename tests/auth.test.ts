@@ -51,12 +51,12 @@ describe('Auth', () => {
         });
     },config.timeout);
 
-    // it('should return true if login successfully', async done => {
-    //     await sdk.login(LoginUser).then(res => {
-    //         expect(res).toHaveProperty('access_token');
-    //         done();
-    //     });
-    // },config.timeout);
+    it('should return true if login successfully', async done => {
+        await sdk.login(LoginUser).then(res => {
+            expect(res).toHaveProperty('access_token');
+            done();
+        });
+    },config.timeout);
 
     it('should create a client ocx-sdk user ', async done => {
         await sdk.createAuthClientUser(sdkUser).then(res => {

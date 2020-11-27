@@ -6,6 +6,7 @@ import * as dataSchemas from './src/utils/DataSchema';
 import Auth from './src/apis/Auth';
 import Profile from "./src/apis/Profile";
 import Access from "./src/apis/Access";
+import Domain from "./src/apis/Domain";
 const objectAssignDeep = require(`object-assign-deep`);
 
 /**
@@ -135,7 +136,7 @@ export class Sdk {
      */
 
     async setupDataChannels(
-       domainId: string,
+       domainId: number,
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
@@ -427,6 +428,81 @@ export class Sdk {
     
      /**
      * Access Services End
+     */
+
+    
+    
+    /**
+     * Domain Services Start
+     */
+
+    
+    /**
+     * Domain Service Create Host 
+     * @param options Optional. Set options for HTTP requests
+     * @param body Body for a new Domain  Host 
+     */
+
+    async DomainCreateHost(
+        body: dataSchemas.NewDomain,
+        options?: dataSchemas.Options,
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Domain(requestOptions).newDomainHost(body);
+    }
+
+    /**
+     * Domain Service Create Host 
+     * @param options Optional. Set options for HTTP requests
+     * @param body Body for a new Sub Domain Host 
+     */
+
+    async DomainCreateSubDomainHost(
+        body: dataSchemas.SubDomain,
+        options?: dataSchemas.Options,
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Domain(requestOptions).createSubDomainRecord(body);
+    }
+
+
+    /**
+     * Domain Service Fetch All  Host 
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async DomainFetchAllHosts(
+        options?: dataSchemas.Options,
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Domain(requestOptions).fetchDomainHosts();
+    }
+
+
+    /**
+     * Domain Service Fetch All Sub Domain Records 
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async DomainFetchAllSubDomainHosts(
+        options?: dataSchemas.Options,
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Domain(requestOptions).fetchSubDomainRecords();
+    }
+
+    
+    
+    
+    
+    
+    
+    /**
+     * Domain Services Start
      */
 
 

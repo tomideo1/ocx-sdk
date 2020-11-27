@@ -1,14 +1,14 @@
 export interface ProfileType {
-  domain_id?: string;
+  domain_id?: number;
   type?: string;
   title?: string;
 }
 
 export interface ProfileRecords {
-  domain_id?: string;
-  profile_type_id?: string;
-  auth_id?: string;
-  type?: string;
+  domain_id?: number;
+  profile_types_id?: number;
+  auth_id?: number;
+  type?: ProfileType;
   title: string;
 }
 export interface ProfileFields {

@@ -1,10 +1,10 @@
-import { NewDomain, subDomain, Options } from './../utils/DataSchema';
+import { NewDomain, SubDomain, Options } from './../utils/DataSchema';
 import request from '../utils/requests';
 
 export default class Domain {
     options: Options;
-    constructor(Options: Options) {
-        this.options = this.options;
+    constructor(options: Options) {
+        this.options = options;
         this.options.url = process.env.OCX_DOMAIN_BASE_URL || process.env.VUE_APP_OCX_DOMAIN_BASE_URL;
     }
 
@@ -24,6 +24,24 @@ export default class Domain {
       ...this.options
     };
     const url = `api/v1/domain-host/fetch`;
+    return request(`GET`, url, requestOptions);
+    }
+
+
+    async createSubDomainRecord(data:SubDomain) {
+        const requestOptions: Options = {
+            ...this.options,
+            data
+        }
+        const url = `api/v1/domain-access/create`;
+         return request(`POST`, url, requestOptions);
+    }
+
+    async fetchSubDomainRecords() {
+        const requestOptions: Options = {
+      ...this.options
+    };
+    const url = `api/v1/domain-access/fetch/`;
     return request(`GET`, url, requestOptions);
     }
 }

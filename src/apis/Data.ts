@@ -17,7 +17,7 @@ export default class Data {
     };
   }
 
-  async setUp(domainId: string) {
+  async setUp(domainId: number) {
     const body = {
       domain_id: domainId
     };
@@ -25,7 +25,8 @@ export default class Data {
       ...this.options,
       data: this.initData(body)
     };
-    const url = `host/create`;
+    const url = `setup`;
+    // return this.initData(body);
     return request(`POST`, url, requestOptions);
   }
 

@@ -7,8 +7,8 @@ export interface NewDomain {
 
 
 
-export interface subDomain  {
-    domain_host_id?: string,
+export interface SubDomain  {
+    domain_hosts_id?: string,
     domain_name?: string,
     identifier?: string,
     type?: string,

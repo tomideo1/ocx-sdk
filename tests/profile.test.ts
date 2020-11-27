@@ -1,5 +1,5 @@
-import { ProfileType } from './../src/utils/ServiceSchema/ProfileSchema';
 import { Sdk } from '../';
+const config = require('../config');
 const headers = {
     'client_id': process.env.OCX_CLIENT_ID,
     'client_secret': process.env.OCX_CLIENT_SECRET,
@@ -11,15 +11,16 @@ const DOMAIN_ID = 2
 
 
 const PROFILETYPE = {
+  "domain_id" : 1,
  "type": "string",
-  "title": "string",
+  "title": "stuff",
 };
 
 const PROFILERECORD = {
-  "auth_id": 0,
-  "domain_id": 0,
-    "profile_types_id": 0,
-  "title" : "gender"
+  "domain_id": 1,
+  "profile_types_id": 1,
+  "auth_id": 1,
+  "title": "gender",
 };
 
 
@@ -31,12 +32,25 @@ const PROFILEFIELD = {
 
 describe('PROFILE', () => {
     it('should create a profile type', async done => {
-        await sdk.createProfileType(PROFILETYPE).then(res => {
-            // console.log(res)
-            // expect(res.OCXPayload.data).toHaveProperty('host_name');
+      await sdk.createProfileType(PROFILETYPE).then(res => {
+            expect(res.OCXPayload.data).toHaveProperty('type');
+            expect(res.OCXPayload.data).toHaveProperty('title');
+            expect(res.statusCode).toEqual(201);
             done();
         });
-    });
+    }, config.timeout);
+  
+  
+    it('should create a profile type', async done => {
+      await sdk.createProfileRecords(PROFILERECORD).then(res => {
+            // expect(res.OCXPayload.data).toHaveProperty('type');
+            expect(res.OCXPayload.data).toHaveProperty('title');
+            expect(res.OCXPayload.data).toHaveProperty('id');
+            expect(res.OCXPayload.data).toHaveProperty('domain_id');
+            expect(res.statusCode).toEqual(201);
+            done();
+        });
+    },config.timeout);
 
 
     //
