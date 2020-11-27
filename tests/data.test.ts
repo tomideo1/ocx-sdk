@@ -43,42 +43,42 @@ const newtable = {
 describe('DATA', () => {
 
     it('should setup all data channels ', async done => {
-        await sdk.setupDataChannels(HostData.domain_id).then(res => {
-            
-        // expect(res.OCXPayload.data).toHaveProperty('host_name');
-        // done();
+        await sdk.setupDataChannels(DOMAIN_ID).then(res => {
+        expect(res.OCXPayload.status).toEqual(200)
+        expect(res.OCXPayload.data).toEqual(true);
+        done();
         });
     },config.timeout);
     
-    // it('should return a host', async done => {
-    //     await sdk.createDataHost(HostData).then(res => {
-    //         expect(res.OCXPayload.data).toHaveProperty('host_name');
-    //         done();
-    //     });
-    // });
+    it('should return a host', async done => {
+        await sdk.createDataHost(HostData).then(res => {
+            expect(res.OCXPayload.data).toHaveProperty('host_name');
+            done();
+        });
+    });
 
 
-    // //
-    // it('should return a Table', async done => {
-    //     await sdk.createDataTable(newtable).then(res => {
-    //       expect(res.OCXPayload.status).toBe(200);
-    //       done();
-    //     });
-    // });
+    //
+    it('should return a Table', async done => {
+        await sdk.createDataTable(newtable).then(res => {
+          expect(res.OCXPayload.status).toBe(200);
+          done();
+        });
+    });
 
-    // it('should return a new Field', async done => {
-    //     await sdk.createDataField(newtable.fields[0],newtable.table_name).then(res => {
-    //       expect(res.OCXPayload.status).toBe(200);
-    //       done();
-    //     });
-    // });
+    it('should return a new Field', async done => {
+        await sdk.createDataField(newtable.fields[0],newtable.table_name).then(res => {
+          expect(res.OCXPayload.status).toBe(200);
+          done();
+        });
+    });
 
-    // it('should return all hosts', async done => {
-    //     await sdk.getDataHosts().then(res => {
-    //         expect(res.OCXPayload.status).toBe(200);
-    //         done();
-    //     });
-    // });
+    it('should return all hosts', async done => {
+        await sdk.getDataHosts().then(res => {
+            expect(res.OCXPayload.status).toBe(200);
+            done();
+        });
+    });
 
 
 

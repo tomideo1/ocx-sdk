@@ -136,7 +136,7 @@ export class Sdk {
      */
 
     async setupDataChannels(
-       domainId: number,
+        domainId: number,
         options?: dataSchemas.Options
     ){
         ocxMethods.checkCredentials(this.options)
