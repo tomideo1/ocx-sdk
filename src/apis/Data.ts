@@ -11,9 +11,9 @@ export default class Data {
   initData(payload: object) {
     return {
       "OCX Schema": this.options.version,
-      OCXType: "Request",
-      OCXComponent: "OCXData",
-      OCXPayload: payload
+      "OCXType": "Request",
+      "OCXComponent": "OCXData",
+      "OCXPayload": payload
     };
   }
 

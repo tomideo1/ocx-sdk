@@ -5,6 +5,7 @@ import  ocxMethods from './src/utils/utils'
 import * as dataSchemas from './src/utils/DataSchema';
 import Auth from './src/apis/Auth';
 import Profile from "./src/apis/Profile";
+import Access from "./src/apis/Access";
 const objectAssignDeep = require(`object-assign-deep`);
 
 /**
@@ -26,7 +27,7 @@ export class Sdk {
                 client_id : process.env.OCX_CLIENT_ID ||process.env.VUE_APP_OCX_CLIENT_ID ,
                 client_secret : process.env.OCX_CLIENT_SECRET || process.env.VUE_APP_OCX_CLIENT_SECRET
             },
-            version: process.env.OCX_VERSION,
+            version: process.env.OCX_VERSION || process.env.VUE_APP_OCX_VERSION,
             timeout: config.timeout,
             responseType: 'json',
         }
@@ -348,24 +349,68 @@ export class Sdk {
         const requestOptions = objectAssignDeep({}, this.options, options);
         return new Profile(requestOptions).getProfileRecords();
     }
-
-
-
-
     /**
      * Profile Data Creation
      * @param body Body of ProfileData
      * @param options Optional. Set options for HTTP requests
      */
 
+    /**
+     * PROFILE SERVICES END
+     */
 
+    
 
- 
+    /**
+     * Data Services Start
+     */
+
+    
+    /**
+     * Access Service Rollback 
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async AccessrollBack(
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Access(requestOptions).rollbackAccess();
+    }
+
+    /**
+     * Access Service Setup 
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async AccessSetup(
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Access(requestOptions).setupAccess();
+    }
 
 
 
     /**
-     * PROFILE SERVICES END
+     * Access Service Setup 
+     * @param options Optional. Set options for HTTP requests
+     * @param body Body for a new Access Service Request Registration
+     */
+
+    async AccessCreateRequest(
+        body: dataSchemas.NewRequest,
+        options?: dataSchemas.Options,
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Access(requestOptions).registerRequest(body);
+    }
+    
+     /**
+     * Data Services End
      */
 
 
