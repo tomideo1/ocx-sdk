@@ -26,7 +26,7 @@ export default class Auth {
     return request(`POST`, url, requestOptions);
   }
   async login(data: LoginUser) {
-    data.client_id = parseInt(<string>process.env.PASSPORT_CLIENT_ID) || parseInt(<string>process.env.VUE_APP_PASSPORT_CLIENT_ID);
+    data.client_id = parseInt(process.env.PASSPORT_CLIENT_ID as string,10) || parseInt(process.env.VUE_APP_PASSPORT_CLIENT_ID as string,10)
     data.client_secret = process.env.PASSPORT_CLIENT_SECRET || process.env.VUE_APP_PASSPORT_CLIENT_SECRET;
     data.grant_type = "password",
     data.scope = "";
@@ -38,8 +38,18 @@ export default class Auth {
     return request(`POST`, url, requestOptions);
   }
 
-  async getUser() {
+  async showUser(userId:number) {
 
+    const requestOptions: Options = {
+      ...this.options
+    };
+    const url = `auth/user/get/${userId}`;
+    return request(`GET`, url, requestOptions);
+    
+  }
+
+  async getAuthenticatedUser() {
+    
     const requestOptions: Options = {
       ...this.options
     };

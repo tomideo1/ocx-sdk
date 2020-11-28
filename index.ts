@@ -25,8 +25,8 @@ export class Sdk {
     constructor(options?: dataSchemas.Options){
         const defaultOption = {
             headers: {
-                client_id : process.env.OCX_CLIENT_ID ||process.env.VUE_APP_OCX_CLIENT_ID ,
-                client_secret : process.env.OCX_CLIENT_SECRET || process.env.VUE_APP_OCX_CLIENT_SECRET
+                "client-id ": process.env.OCX_CLIENT_ID || process.env.VUE_APP_OCX_CLIENT_ID,
+                "client-secret ": process.env.OCX_CLIENT_SECRET || process.env.VUE_APP_OCX_CLIENT_SECRET
             },
             version: process.env.OCX_VERSION || process.env.VUE_APP_OCX_VERSION,
             timeout: config.timeout,
@@ -91,15 +91,30 @@ export class Sdk {
     /**
      * get Authenticated Client User
      * @param options Optional. Set options for HTTP requests
+     * @param userId number. the id of the User
+     */
+
+    showUser(
+        userId : number,
+        options?: dataSchemas.Options,
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Auth(requestOptions).showUser(userId);
+
+    }
+    /**
+     * get Authenticated Client User
+     * @param options Optional. Set options for HTTP requests
      */
 
     getAuthUser(
         options?: dataSchemas.Options
-    ){
-        ocxMethods.checkCredentials(this.options)
-        const requestOptions = objectAssignDeep({}, this.options, options);
-        return new Auth(requestOptions).getUser();
-
+    ) {
+     ocxMethods.checkCredentials(this.options)
+    const requestOptions = objectAssignDeep({}, this.options, options);
+    return new Auth(requestOptions).getAuthenticatedUser();
+        
     }
 
 
@@ -437,6 +452,20 @@ export class Sdk {
      */
 
     
+    /**
+     * Domain Service Setup Tb;e 
+     * @param options Optional. Set options for HTTP requests
+     */
+
+    async DomainSetup(
+        options?: dataSchemas.Options,
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Domain(requestOptions).setupDomain();
+    }
+
+
     /**
      * Domain Service Create Host 
      * @param options Optional. Set options for HTTP requests

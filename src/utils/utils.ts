@@ -7,17 +7,17 @@ export default {
    * @param {object} args
    * @returns {Boolean} returns true if all the credentials are in place
    */
-  checkCredentials(args: object) {
+   checkCredentials(args: object) {
     // @ts-ignore
     if (_.isEmpty(args.headers)) {
       throw new OcxExceptions("you did not provide any valid octopusx credentials");
     }
     // @ts-ignore
-    if (!args.headers.hasOwnProperty("client_id")) {
+    if (!args.headers.hasOwnProperty("client-id")) {
       throw new OcxExceptions("you did not provide the client id");
     }
     // @ts-ignore
-    if (!args.headers.hasOwnProperty("client_secret")) {
+    if (!args.headers.hasOwnProperty("client-secret")) {
       throw new OcxExceptions("you did not provide the client secret");
     }
 

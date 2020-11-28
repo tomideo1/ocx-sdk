@@ -9,13 +9,22 @@ export default class Domain {
     }
 
 
+    async setupDomain() {
+        const requestOptions: Options = {
+            ...this.options,
+        }
+        const url = `api/v1/setup`;
+        return request(`POST`, url, requestOptions);
+    }
+
+
     async newDomainHost(data: NewDomain) {
         const requestOptions: Options = {
             ...this.options,
             data
         }
         const url = `api/v1/domain-host/create`;
-         return request(`POST`, url, requestOptions);
+        return request(`POST`, url, requestOptions);
     }
 
     async fetchDomainHosts() {

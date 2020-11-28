@@ -17,8 +17,8 @@
     const options = {
         headers: {
         
-            'client_id': 'your-octopusx-client-id',
-            'client_secret': 'your-octopusx-client-secret',
+            'client-id': 'your-octopusx-client-id',
+            'client-ecret': 'your-octopusx-client-secret',
         }
     }
 
