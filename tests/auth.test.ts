@@ -58,7 +58,6 @@ describe('Auth', () => {
         await sdk.getAuthUser().then(res => {
             expect(res.OCXPayload.data).toHaveProperty('user');
             expect(res.OCXPayload.data).toHaveProperty('id');
-            expect(res.OCXPayload.data.user).toHaveProperty('id');
             done();
         });
     }, config.timeout);
@@ -67,6 +66,7 @@ describe('Auth', () => {
          sdk.showUser(1).then(res => {
                 expect(res.OCXPayload.data).toHaveProperty('id');
                 expect(res.OCXPayload.data).toHaveProperty('user_role');
+                done();
             });
     }, config.timeout);
 

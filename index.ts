@@ -32,6 +32,8 @@ export class Sdk {
             timeout: config.timeout,
             responseType: 'json',
         }
+
+        console.log(defaultOption)
         this.options = objectAssignDeep({}, defaultOption, options);
     }
 

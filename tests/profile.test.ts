@@ -38,7 +38,6 @@ describe('PROFILE', () => {
   
     it('should create a profile type', async done => {
       await sdk.createProfileRecords(PROFILERECORD).then(res => {
-          
             // expect(res.OCXPayload.data).toHaveProperty('type');
             expect(res.ocxPayload.data).toHaveProperty('title');
             expect(res.ocxPayload.data).toHaveProperty('id');
