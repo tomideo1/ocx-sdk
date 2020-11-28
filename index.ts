@@ -33,7 +33,6 @@ export class Sdk {
             responseType: 'json',
         }
 
-        console.log(defaultOption)
         this.options = objectAssignDeep({}, defaultOption, options);
     }
 
