@@ -14,6 +14,6 @@ export interface LoginUser {
   grant_type?: string;
   password?: string;
   scope?: string;
-  client_id?: string;
+  client_id?: number;
   client_secret?: string;
 }
