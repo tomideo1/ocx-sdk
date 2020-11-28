@@ -1,12 +1,6 @@
 import { Sdk } from '../';
 const config = require('../config');
-const headers = {
-    'client_id': process.env.OCX_CLIENT_ID,
-    'client_secret': process.env.OCX_CLIENT_SECRET,
-    'auth-key': `Bearer tokenString`,
-}
-
-const sdk = new Sdk({headers});
+const sdk = new Sdk();
 const DOMAIN_ID = 2
 
 

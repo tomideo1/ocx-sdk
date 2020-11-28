@@ -1,13 +1,8 @@
 import { Sdk } from '../';
 const faker = require('faker')
-const headers = {
-    'client-id': process.env.OCX_CLIENT_ID,
-    'client-secret': process.env.OCX_CLIENT_SECRET,
-    'auth-key': `Bearer tokenString`,
-}
 const config = require('../config');
 
-const sdk = new Sdk({headers});
+const sdk = new Sdk();
 const newUser =   {
     "password": "testing",
     "email": faker.internet.email(),
@@ -41,16 +36,12 @@ const LoginUser = {
 //
 
 describe('Auth', () => {
-    it('should register and get a user', async  done => {
-         await sdk.register(newUser).then(res => {
+    it('should register a user', async  done => {
+        await sdk.register(newUser).then(res => {
             expect(res.OCXPayload.status).toBe(true);
             expect(res.OCXPayload.data).toHaveProperty('token');
             expect(res.OCXPayload.data).toHaveProperty('client_secret');
             expect(res.OCXPayload.data).toHaveProperty('octopusx_secret');
-            sdk.showUser(res.OCXPayload.data.id).then(res => {
-                expect(res.OCXPayload.data).toHaveProperty('id');
-                expect(res.OCXPayload.data).toHaveProperty('user_role');
-            });
             done();
         });
         
@@ -70,6 +61,13 @@ describe('Auth', () => {
             expect(res.OCXPayload.data.user).toHaveProperty('id');
             done();
         });
+    }, config.timeout);
+
+    it('should return a valid  user', async done => {
+         sdk.showUser(1).then(res => {
+                expect(res.OCXPayload.data).toHaveProperty('id');
+                expect(res.OCXPayload.data).toHaveProperty('user_role');
+            });
     }, config.timeout);
 
     it('should create a client ocx-sdk user ', async done => {

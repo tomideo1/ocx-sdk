@@ -11,7 +11,7 @@
     "url": "https://github.com/tomideo1/ocx-sdk/issues"
   },
   "scripts": {
-    "test": "jest",
+    "test": "npm run build && jest",
     "build": "tsc -p .",
     "prepare": "npm run -s build",
     "precommit": "pretty-quick --staged",

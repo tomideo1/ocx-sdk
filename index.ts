@@ -25,8 +25,8 @@ export class Sdk {
     constructor(options?: dataSchemas.Options){
         const defaultOption = {
             headers: {
-                "client-id ": process.env.OCX_CLIENT_ID || process.env.VUE_APP_OCX_CLIENT_ID,
-                "client-secret ": process.env.OCX_CLIENT_SECRET || process.env.VUE_APP_OCX_CLIENT_SECRET
+                clientId: process.env.OCX_CLIENT_ID || process.env.VUE_APP_OCX_CLIENT_ID,
+                clientSecret: process.env.OCX_CLIENT_SECRET || process.env.VUE_APP_OCX_CLIENT_SECRET
             },
             version: process.env.OCX_VERSION || process.env.VUE_APP_OCX_VERSION,
             timeout: config.timeout,

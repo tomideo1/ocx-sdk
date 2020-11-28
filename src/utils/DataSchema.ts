@@ -15,8 +15,8 @@ export interface Options extends AxiosRequestConfig {
 }
 
 export interface Headers {
-  "client_id"?: string;
-  "client-secret"?: string;
+  clientId?: string;
+  clientSecret?: string;
 }
 
 export {
