@@ -37,13 +37,13 @@ const newtable = {
 
 describe('DATA', () => {
 
-    it('should setup all data channels ', async done => {
-        await sdk.setupDataChannels(DOMAIN_ID).then(res => {
-        expect(res.OCXPayload.status).toEqual(200)
-        expect(res.OCXPayload.data).toEqual(true);
-        done();
-        });
-    },config.timeout);
+    // it('should service-setup all data channels ', async done => {
+    //     await sdk.setupDataChannels(DOMAIN_ID).then(res => {
+    //     expect(res.OCXPayload.status).toEqual(200)
+    //     expect(res.OCXPayload.data).toEqual(true);
+    //     done();
+    //     });
+    // },config.timeout);
     
     it('should return a host', async done => {
         await sdk.createDataHost(HostData).then(res => {
