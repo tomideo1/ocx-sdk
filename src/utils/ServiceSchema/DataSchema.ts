@@ -23,3 +23,14 @@ export interface NewField {
   visibility?: boolean;
   nullable?: boolean;
 }
+
+
+export interface NewQuery {
+  table_name?: string;
+  query?: string;
+  value ?: string,
+  queryPayload?: object,
+  relationships?:[],
+  order ?: object,
+  count ?: any
+}

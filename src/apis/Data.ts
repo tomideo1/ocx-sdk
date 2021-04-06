@@ -1,4 +1,4 @@
-import { Options, NewTable, NewHost, NewField } from "../utils/DataSchema";
+import { Options, NewTable, NewHost, NewField, NewQuery } from "../utils/DataSchema";
 import request from "../utils/requests";
 
 export default class Data {
@@ -16,6 +16,8 @@ export default class Data {
       "OCXPayload": payload
     };
   }
+
+
 
   async setUp(domainId: number) {
     const body = {
@@ -91,5 +93,43 @@ export default class Data {
     };
     const url = `table/retrieve`;
     return request(`GET`, url, requestOptions);
+  }
+
+
+
+  async updateQuery(data: NewQuery){
+    const queryBody = {
+      "table_name": data.table_name,
+      "where": [
+        {"column": data.query, "operation": "=", "value": data.value}
+      ],
+      "data": data.queryPayload,
+      "order": { "column": data.query, "operation": "asc" },
+      "count": null as any
+    }
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(queryBody)
+    };
+    const url = `query/update`;
+    return request(`POST`, url, requestOptions);
+  }
+
+  async fetchAllQuery(data:NewQuery){
+    const queryBody = {
+      "table_name": data.table_name,
+      "where": [] as string[],
+      "joins": [] as string[],
+      "reverse_joins": [] as string[],
+      "order": { "column": data.query, "operation": "asc" },
+      "count": null as any,
+      "pagination": null as any
+    }
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(queryBody)
+    };
+    const url = `query/retrieve`;
+    return request(`POST`, url, requestOptions);
   }
 }

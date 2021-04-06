@@ -75,6 +75,16 @@ describe('DATA', () => {
         });
     });
 
+    it('should return all values in a table', async done => {
+        await sdk.dataFetchAll({
+            table_name: 'profile_types',
+            query: 'id'
+        }).then(res => {
+            expect(res.OCXPayload.status).toBe(200);
+            done();
+        });
+    });
+
 
 
 

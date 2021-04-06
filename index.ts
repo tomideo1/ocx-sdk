@@ -253,6 +253,33 @@ export class Sdk {
         return new Data(requestOptions).getFields(tableId);
     }
 
+
+    /**
+     * Data Field Creation
+     * @param body Body of hostData
+     * @param options Optional. Set options for HTTP requests
+     */
+
+
+    async dataUpdate(
+        body: dataSchemas.NewQuery,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Data(requestOptions).updateQuery(body);
+    }
+
+
+    async dataFetchAll(
+        body: dataSchemas.NewQuery,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Data(requestOptions).fetchAllQuery(body);
+    }
+
     /**
      * DATA SERVICES END
      */
