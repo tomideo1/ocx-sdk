@@ -184,7 +184,7 @@ export default class Data {
 
   async updateDataConnection(connectionId: string, payload:DataConnection){
     const body = {
-      id: parseInt(connectionId),
+      id: connectionId,
       ...payload
     }
 
