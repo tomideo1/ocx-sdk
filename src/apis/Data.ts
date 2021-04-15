@@ -162,15 +162,36 @@ export default class Data {
     return request(`POST`, url, requestOptions);
   }
 
-  async fetchDataConnections(tableId: string){
+  async fetchDataConnections(){
+    const requestOptions: Options = {
+      ...this.options
+    };
+    const url = `datapoint/retrieve`;
+    return request(`POST`, url, requestOptions);
+  }
+
+  async fetchSingleDataConnection(connectionId: string){
     const body = {
-      table_id: tableId
+      id: connectionId
     };
     const requestOptions: Options = {
       ...this.options,
       data: this.initData(body)
     };
-    const url = `datapoint/retrieve`;
+    const url = `datapoint/retrieveone`;
+    return request(`POST`, url, requestOptions);
+  }
+
+  async updateDataConnection(connectionId: string, data:DataConnection){
+    const body = {
+      id: connectionId,
+      data: data.datapoint
+    }
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(body)
+    };
+    const url = `datapoint/update`;
     return request(`POST`, url, requestOptions);
   }
 }

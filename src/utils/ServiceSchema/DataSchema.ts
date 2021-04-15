@@ -46,5 +46,6 @@ export interface DataConnection {
   type?: string,
   method?: string,
   api?:object,
-  database?:object
+  database?:object,
+  datapoint?:object
 }

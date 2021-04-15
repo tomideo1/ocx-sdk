@@ -360,12 +360,31 @@ export class Sdk {
     }
 
     async dataFetchConnection(
-        tableId: string,
         options?: dataSchemas.Options,
     ){
         ocxMethods.checkCredentials(this.options)
         const requestOptions = objectAssignDeep({}, this.options, options);
-        return new Data(requestOptions).fetchDataConnections(tableId);
+        return new Data(requestOptions).fetchDataConnections();
+    }
+
+    async dataFetchSingleConnection(
+        connectionId: string,
+        options?: dataSchemas.Options,
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Data(requestOptions).fetchSingleDataConnection(connectionId);
+    }
+
+
+    async dataUpdateConnection(
+        connectionId: string,
+        body: dataSchemas.DataConnection,
+        options?: dataSchemas.Options,
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Data(requestOptions).updateDataConnection(connectionId,body);
     }
     /**
      * DATA SERVICES END
