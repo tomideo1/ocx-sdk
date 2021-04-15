@@ -41,7 +41,7 @@ export interface GridLoader {
   file?: string
 }
 
-export interface DataPoint {
+export interface DataConnection {
   description?:string,
   type?: string,
   method?: string,

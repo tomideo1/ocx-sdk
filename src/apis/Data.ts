@@ -1,4 +1,4 @@
-import {Options, NewTable, NewHost, NewField, NewQuery, GridLoader, DataPoint} from "../utils/DataSchema";
+import {Options, NewTable, NewHost, NewField, NewQuery, GridLoader, DataConnection} from "../utils/DataSchema";
 import request from "../utils/requests";
 
 export default class Data {
@@ -153,7 +153,7 @@ export default class Data {
   }
 
 
-  async createDataPoint(data: DataPoint){
+  async createDataConnection(data: DataConnection){
     const requestOptions: Options = {
       ...this.options,
       data: this.initData(data)
@@ -162,7 +162,7 @@ export default class Data {
     return request(`POST`, url, requestOptions);
   }
 
-  async fetchDataPoints(tableId: string){
+  async fetchDataConnections(tableId: string){
     const body = {
       table_id: tableId
     };

@@ -134,6 +134,57 @@ export class Sdk {
         return new Auth(requestOptions).createUser(body);
     }
 
+
+    getAllAuthUsers(
+        options?: dataSchemas.Options
+    ) {
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Auth(requestOptions).fetchUsers();
+
+    }
+
+
+    async createAuthRole(
+        body: dataSchemas.NewRole,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Auth(requestOptions).createRole(body);
+    }
+
+
+    async createAuthGroup(
+        body: dataSchemas.NewGroup,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Auth(requestOptions).createGroup(body);
+    }
+
+
+
+    getAllAuthRoles(
+        options?: dataSchemas.Options
+    ) {
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Auth(requestOptions).fetchRoles();
+
+    }
+
+
+    getAllAuthGroups(
+        options?: dataSchemas.Options
+    ) {
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Auth(requestOptions).fetchGroups();
+
+    }
+
     /**
      * AUTH SERVICES END
      */
@@ -280,6 +331,42 @@ export class Sdk {
         return new Data(requestOptions).fetchAllQuery(body);
     }
 
+
+    async DataGridLoadUrl(
+        body: dataSchemas.GridLoader,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Data(requestOptions).urlGridLoad(body);
+    }
+
+    async DataGridLoadFile(
+        body: dataSchemas.GridLoader,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Data(requestOptions).fileGridLoad(body);
+    }
+
+    async createDataConnection(
+        body: dataSchemas.DataConnection,
+        options?: dataSchemas.Options
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Data(requestOptions).createDataConnection(body);
+    }
+
+    async fetchDataConnection(
+        tableId: string,
+        options?: dataSchemas.Options,
+    ){
+        ocxMethods.checkCredentials(this.options)
+        const requestOptions = objectAssignDeep({}, this.options, options);
+        return new Data(requestOptions).fetchDataConnections(tableId);
+    }
     /**
      * DATA SERVICES END
      */
@@ -439,35 +526,36 @@ export class Sdk {
 
 
     /**
-     * Access Service Create Request 
+     * Access Service Create Routes
      * @param options Optional. Set options for HTTP requests
      * @param body Body for a new Access Service Request Registration
      */
 
-    async AccessCreateRequest(
+    async AccessCreateRoute(
         body: dataSchemas.NewRequest,
         options?: dataSchemas.Options,
     ){
         ocxMethods.checkCredentials(this.options)
         const requestOptions = objectAssignDeep({}, this.options, options);
-        return new Access(requestOptions).registerRequest(body);
+        return new Access(requestOptions).registerRoute(body);
     }
-
 
     /**
-     * Access Service Unregister Request 
+     * Access Service Fetch Routes
      * @param options Optional. Set options for HTTP requests
      * @param body Body for a new Access Service Request Registration
      */
 
-    async AccessUnregisterRequest(
-        body: dataSchemas.NewRequest,
+    async AccessFetchRoutes(
         options?: dataSchemas.Options,
     ){
         ocxMethods.checkCredentials(this.options)
         const requestOptions = objectAssignDeep({}, this.options, options);
-        return new Access(requestOptions).unRegisterRequest(body);
+        return new Access(requestOptions).getRoutes();
     }
+
+
+
     
      /**
      * Access Services End
