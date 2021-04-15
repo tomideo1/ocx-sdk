@@ -185,8 +185,11 @@ export default class Data {
   async updateDataConnection(connectionId: string, data:DataConnection){
     const body = {
       id: connectionId,
-      data: data.datapoint
+      data: {
+        datapoint: data.datapoint
+      }
     }
+
     const requestOptions: Options = {
       ...this.options,
       data: this.initData(body)
