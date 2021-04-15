@@ -1,4 +1,4 @@
-import { Options, NewUser, LoginUser } from "../utils/DataSchema";
+import {Options, NewUser, LoginUser, NewGroup, NewRole} from "../utils/DataSchema";
 import request from "../utils/requests";
 
 export default class Auth {
@@ -48,6 +48,14 @@ export default class Auth {
     
   }
 
+  async fetchUsers(){
+    const requestOptions: Options = {
+      ...this.options
+    };
+    const url = `auth/user/get`;
+    return request(`GET`, url, requestOptions);
+  }
+
   async getAuthenticatedUser() {
     
     const requestOptions: Options = {
@@ -64,5 +72,41 @@ export default class Auth {
     };
     const url = `auth/client`;
     return request(`POST`, url, requestOptions);
+  }
+
+  async createGroup(data: NewGroup){
+    const requestOptions: Options = {
+      ...this.options,
+      data
+    };
+    const url = `groups/add`;
+    return request(`POST`, url, requestOptions);
+  }
+
+  async fetchGroups(){
+    const requestOptions: Options = {
+      ...this.options
+    };
+    const url = `auth/groups`;
+    return request(`GET`, url, requestOptions);
+  }
+
+
+
+  async createRole(data: NewRole){
+    const requestOptions: Options = {
+      ...this.options,
+      data
+    };
+    const url = `roles/add`;
+    return request(`POST`, url, requestOptions);
+  }
+
+  async fetchRoles(){
+    const requestOptions: Options = {
+      ...this.options
+    };
+    const url = `auth/roles`;
+    return request(`GET`, url, requestOptions);
   }
 }

@@ -35,7 +35,7 @@ export default class Access {
     return request(`POST`, url, requestOptions);
     }
 
-    async registerRequest(data: NewRequest) {
+    async registerRoute(data: NewRequest) {
         const requestOptions: Options = {
             ...this.options,
             data: this.initData(data)
@@ -44,20 +44,11 @@ export default class Access {
     return request(`POST`, url, requestOptions);
     }
 
-    async getAccess() {
-            const requestOptions: Options = {
-      ...this.options
-    };
-    const url = `access/${this.options.version}/routes/access`;
-    return request(`GET`, url, requestOptions);
-    }
-
-    async unRegisterRequest(data: NewRequest) {
-        const requestOptions: Options = {
-            ...this.options,
-            data: this.initData(data)
-    };
-    const url = `access/${this.options.version}/routes/register`;
-    return request(`POST`, url, requestOptions);
+    async getRoutes(){
+      const requestOptions: Options = {
+        ...this.options
+      };
+      const url = `access/${this.options.version}/routes/view`;
+      return request(`GET`, url, requestOptions);
     }
 }

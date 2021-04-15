@@ -1,4 +1,4 @@
-import { Options, NewTable, NewHost, NewField, NewQuery } from "../utils/DataSchema";
+import {Options, NewTable, NewHost, NewField, NewQuery, GridLoader, DataPoint} from "../utils/DataSchema";
 import request from "../utils/requests";
 
 export default class Data {
@@ -131,5 +131,46 @@ export default class Data {
     };
     const url = `query/retrieve`;
     return request(`POST`, url, requestOptions);
+  }
+
+
+  async urlGridLoad(data: GridLoader){
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(data)
+    };
+    const url = `gridloader/load-url`;
+    return request(`POST`, url, requestOptions);
+  }
+
+  async fileGridLoad(data: GridLoader){
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(data)
+    };
+    const url = `gridloader/load-url`;
+    return request(`POST`, url, requestOptions);
+  }
+
+
+  async createDataPoint(data: DataPoint){
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(data)
+    };
+    const url = `datapoint/create`;
+    return request(`POST`, url, requestOptions);
+  }
+
+  async fetchDataPoints(tableId: string){
+    const body = {
+      table_id: tableId
+    };
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(body)
+    };
+    const url = `datapoint/retrieve`;
+    return request(`GET`, url, requestOptions);
   }
 }

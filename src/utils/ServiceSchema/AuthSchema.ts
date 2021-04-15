@@ -17,3 +17,13 @@ export interface LoginUser {
   client_id?: number;
   client_secret?: string;
 }
+
+export interface NewGroup {
+  name?:string,
+  slug?:string
+}
+
+export interface NewRole {
+  name?:string,
+  slug?:string
+}

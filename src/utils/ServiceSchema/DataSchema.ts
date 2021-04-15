@@ -34,3 +34,17 @@ export interface NewQuery {
   order ?: object,
   count ?: any
 }
+
+export interface GridLoader {
+  table_name?: string,
+  url?: string,
+  file?: string
+}
+
+export interface DataPoint {
+  description?:string,
+  type?: string,
+  method?: string,
+  api?:object,
+  database?:object
+}
