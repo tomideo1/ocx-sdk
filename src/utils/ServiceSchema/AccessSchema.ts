@@ -6,7 +6,7 @@ export interface NewRequest {
   method?: string;
   headers?: object;
   body?: object;
-  is_protected?: Boolean;
+  is_protected?: boolean;
   protected_profile?: string;
   protected_profile_id?: string;
 
