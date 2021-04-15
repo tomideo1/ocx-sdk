@@ -148,7 +148,7 @@ export default class Data {
       ...this.options,
       data: this.initData(data)
     };
-    const url = `gridloader/load-url`;
+    const url = `gridloader/load-csv`;
     return request(`POST`, url, requestOptions);
   }
 
