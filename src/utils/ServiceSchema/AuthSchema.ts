@@ -5,7 +5,8 @@ export interface NewUser {
   gender?: string;
   phone?: string;
   email?: string;
-  role?: string;
+  role_id: string;
+  group_id: string;
   password?: string;
 }
 
