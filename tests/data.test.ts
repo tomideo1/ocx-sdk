@@ -5,7 +5,7 @@ const sdk = new Sdk();
 const DOMAIN_ID =  2
 const HostData =   {
     "domain_id": 1,
-    "host_name": faker.company.companySuffix(),
+    "host_name": faker.address.city(),
     "host": "127.0.0.1",
     "port": 3306,
     "driver": "mysql",
@@ -17,17 +17,17 @@ const HostData =   {
 const newtable = {
     "database_type": "default",
     "host_name": "default",
-    "table_name": faker.commerce.department(),
+    "table_name": faker.address.streetName(),
     "visibility": true,
     "fields": [
         {
-            "field_name": faker.database.column(),
+            "field_name": faker.address.country(),
             "field_type": "unsigned_integer",
             "visibility": true,
             "nullable": false
         },
         {
-            "field_name": faker.company.catchPhrase(),
+            "field_name": faker.address.state(),
             "field_type": "string",
             "visibility": true,
             "nullable": true

@@ -359,7 +359,7 @@ export class Sdk {
         return new Data(requestOptions).createDataConnection(body);
     }
 
-    async fetchDataConnection(
+    async dataFetchConnection(
         tableId: string,
         options?: dataSchemas.Options,
     ){

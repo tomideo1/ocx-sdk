@@ -171,6 +171,6 @@ export default class Data {
       data: this.initData(body)
     };
     const url = `datapoint/retrieve`;
-    return request(`GET`, url, requestOptions);
+    return request(`POST`, url, requestOptions);
   }
 }
