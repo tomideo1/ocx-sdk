@@ -182,12 +182,10 @@ export default class Data {
     return request(`POST`, url, requestOptions);
   }
 
-  async updateDataConnection(connectionId: string, data:DataConnection){
+  async updateDataConnection(connectionId: string, payload:DataConnection){
     const body = {
-      id: connectionId,
-      data: {
-        datapoint: data.datapoint
-      }
+      id: parseInt(connectionId),
+      ...payload
     }
 
     const requestOptions: Options = {
