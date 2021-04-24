@@ -242,6 +242,11 @@ export class Sdk {
     }
 
 
+    async updateDataHosts(){
+
+    }
+
+
     /**
      * Data Table Creation
      * @param body Body of hostData
@@ -616,51 +621,7 @@ export class Sdk {
         return new Domain(requestOptions).newDomainHost(body);
     }
 
-    /**
-     * Domain Service Create Host 
-     * @param options Optional. Set options for HTTP requests
-     * @param body Body for a new Sub Domain Host 
-     */
 
-    async DomainCreateSubDomainHost(
-        body: dataSchemas.SubDomain,
-        options?: dataSchemas.Options,
-    ){
-        ocxMethods.checkCredentials(this.options)
-        const requestOptions = objectAssignDeep({}, this.options, options);
-        return new Domain(requestOptions).createSubDomainRecord(body);
-    }
-
-
-    /**
-     * Domain Service Fetch All  Host 
-     * @param options Optional. Set options for HTTP requests
-     */
-
-    async DomainFetchAllHosts(
-        options?: dataSchemas.Options,
-    ){
-        ocxMethods.checkCredentials(this.options)
-        const requestOptions = objectAssignDeep({}, this.options, options);
-        return new Domain(requestOptions).fetchDomainHosts();
-    }
-
-
-    /**
-     * Domain Service Fetch All Sub Domain Records 
-     * @param options Optional. Set options for HTTP requests
-     */
-
-    async DomainFetchAllSubDomainHosts(
-        options?: dataSchemas.Options,
-    ){
-        ocxMethods.checkCredentials(this.options)
-        const requestOptions = objectAssignDeep({}, this.options, options);
-        return new Domain(requestOptions).fetchSubDomainRecords();
-    }
-
-    
-    
     
     
     

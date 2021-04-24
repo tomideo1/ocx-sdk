@@ -25,6 +25,33 @@ export default class Profile {
     return request(`GET`, url, requestOptions);
   }
 
+  async getSingleProfile(profileId: string){
+    const requestOptions: Options = {
+      ...this.options
+    };
+    const url = `ProfileType/${profileId}`;
+    return request(`GET`, url, requestOptions);
+  }
+
+  async updateProfileType(profileId: string, data: ProfileType) {
+    const requestOptions: Options = {
+      ...this.options,
+      data
+    };
+    const url = `ProfileType/${profileId}`;
+    return request(`PUT`, url, requestOptions);
+  }
+
+  async deleteProfileType(profileId: string) {
+    const requestOptions: Options = {
+      ...this.options,
+    };
+    const url = `ProfileType/${profileId}`;
+    return request(`DELETE`, url, requestOptions);
+  }
+
+
+
   async createProfileRecords(data: ProfileRecords) {
     const requestOptions: Options = {
       ...this.options,
@@ -42,6 +69,32 @@ export default class Profile {
     return request(`GET`, url, requestOptions);
   }
 
+  async getSingleProfileRecord(profileRecordId: string){
+    const requestOptions: Options = {
+      ...this.options
+    };
+    const url = `ProfileRecord/${profileRecordId}`;
+    return request(`GET`, url, requestOptions);
+  }
+
+  async updateProfileRecord(profileRecordId: string, data: ProfileRecords) {
+    const requestOptions: Options = {
+      ...this.options,
+      data
+    };
+    const url = `ProfileRecord/${profileRecordId}`;
+    return request(`PUT`, url, requestOptions);
+  }
+
+
+  async deleteProfileRecord(profileRecordId: string) {
+    const requestOptions: Options = {
+      ...this.options,
+    };
+    const url = `ProfileRecord/${profileRecordId}`;
+    return request(`DELETE`, url, requestOptions);
+  }
+
   async createProfileFields(data: ProfileFields) {
     const requestOptions: Options = {
       ...this.options,
@@ -57,6 +110,33 @@ export default class Profile {
     };
     const url = `ProfileField`;
     return request(`GET`, url, requestOptions);
+  }
+
+
+  async getSingleProfileField(profileFieldId: string){
+    const requestOptions: Options = {
+      ...this.options
+    };
+    const url = `ProfileField/${profileFieldId}`;
+    return request(`GET`, url, requestOptions);
+  }
+
+  async updateProfileField(profileFieldId: string, data: ProfileFields) {
+    const requestOptions: Options = {
+      ...this.options,
+      data
+    };
+    const url = `ProfileField/${profileFieldId}`;
+    return request(`PUT`, url, requestOptions);
+  }
+
+
+  async deleteProfileField(profileFieldId: string) {
+    const requestOptions: Options = {
+      ...this.options,
+    };
+    const url = `ProfileField/${profileFieldId}`;
+    return request(`DELETE`, url, requestOptions);
   }
 
   async createProfileData(data: ProfileData) {

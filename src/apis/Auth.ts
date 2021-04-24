@@ -17,12 +17,21 @@ export default class Auth {
     return request(`POST`, url, requestOptions);
   }
 
-  async registerClientUser(data: NewUser) {
+  async createUser(data: NewUser) {
     const requestOptions: Options = {
       ...this.options,
       data
     };
     const url = `auth/user/add`;
+    return request(`POST`, url, requestOptions);
+  }
+
+  async updateUser(userId:string, data:NewUser){
+    const requestOptions: Options = {
+      ...this.options,
+      data
+    };
+    const url = `auth/user/update/${userId}`;
     return request(`POST`, url, requestOptions);
   }
   async login(data: LoginUser) {
@@ -45,7 +54,7 @@ export default class Auth {
     };
     const url = `auth/user/get/${userId}`;
     return request(`GET`, url, requestOptions);
-    
+
   }
 
   async fetchUsers(){
@@ -57,7 +66,7 @@ export default class Auth {
   }
 
   async getAuthenticatedUser() {
-    
+
     const requestOptions: Options = {
       ...this.options
     };
@@ -65,14 +74,6 @@ export default class Auth {
     return request(`GET`, url, requestOptions);
   }
 
-  async createUser(data: NewUser) {
-    const requestOptions: Options = {
-      ...this.options,
-      data
-    };
-    const url = `auth/client`;
-    return request(`POST`, url, requestOptions);
-  }
 
   async createGroup(data: NewGroup){
     const requestOptions: Options = {
@@ -81,6 +82,23 @@ export default class Auth {
     };
     const url = `groups/add`;
     return request(`POST`, url, requestOptions);
+  }
+
+  async updateGroup(groupId:string, data: NewGroup){
+    const requestOptions: Options = {
+      ...this.options,
+      data
+    };
+    const url = `groups/update/${groupId}`;
+    return request(`PATCH`, url, requestOptions);
+  }
+
+  async deleteGroup(groupId:string){
+    const requestOptions: Options = {
+      ...this.options,
+    };
+    const url = `groups/remove/${groupId}`;
+    return request(`DELETE`, url, requestOptions);
   }
 
   async fetchGroups(){
@@ -108,5 +126,22 @@ export default class Auth {
     };
     const url = `auth/roles`;
     return request(`GET`, url, requestOptions);
+  }
+
+  async updateRole(roleId:string, data: NewRole){
+    const requestOptions: Options = {
+      ...this.options,
+      data
+    };
+    const url = `roles/update/${roleId}`;
+    return request(`PATCH`, url, requestOptions);
+  }
+
+  async deleteRole(roleId:string){
+    const requestOptions: Options = {
+      ...this.options,
+    };
+    const url = `roles/remove/${roleId}`;
+    return request(`DELETE`, url, requestOptions);
   }
 }

@@ -14,7 +14,7 @@ export default class Access {
     return {
       "OCX Schema": this.options.version,
       "OCXType": "Request",
-      "OCXComponent": "OCXData",
+      "OCXComponent": "OCXAccess",
       "OCXPayload": payload
     };
   }
@@ -50,5 +50,22 @@ export default class Access {
       };
       const url = `access/${this.options.version}/routes/view`;
       return request(`GET`, url, requestOptions);
+    }
+
+    async fetchSingleRoute(routeId: string){
+      const requestOptions: Options = {
+        ...this.options
+      };
+      const url = `access/${this.options.version}/routes/view/${routeId}`;
+      return request(`GET`, url, requestOptions);
+    }
+
+    async unRegisterRoute(routeId: string){
+      const requestOptions: Options = {
+        ...this.options,
+        data: this.initData({})
+      };
+      const url = `access/${this.options.version}/routes/unregister/${routeId}`;
+      return request(`DELETE`, url, requestOptions);
     }
 }

@@ -52,6 +52,32 @@ export default class Data {
     return request(`GET`, url, requestOptions);
   }
 
+  async updateHost(hostId: string, data:NewHost){
+    const body = {
+      host_id: hostId,
+      host_data: data
+    };
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(body)
+    }
+    const url = `host/update`;
+    return request(`POST`, url, requestOptions);
+  }
+
+
+  async deleteHost(hostId: string){
+    const body = {
+      host_id: hostId,
+    };
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(body)
+    }
+    const url = `host/delete`;
+    return request(`POST`, url, requestOptions);
+  }
+
   async createField(data: NewField, tableName: string) {
     const body = {
       table_name: tableName,
@@ -65,6 +91,51 @@ export default class Data {
     const url = `field/create`;
     return request(`POST`, url, requestOptions);
   }
+
+  async retrieveFields(tableId: string){
+    const body = {
+      table_id: tableId,
+    };
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(body)
+    };
+
+    const url = `field/retrieve`;
+    return request(`POST`, url, requestOptions);
+  }
+
+
+  async updateField(fieldId: string, data:NewField){
+    const body = {
+      field_id: fieldId,
+      field_data: data
+    };
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(body)
+    };
+
+    const url = `field/update`;
+    return request(`POST`, url, requestOptions);
+  }
+
+  async deleteField(fieldId: string){
+    const body = {
+      field_id: fieldId,
+    };
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(body)
+    };
+    const url = `field/delete`;
+    return request(`POST`, url, requestOptions);
+  }
+
+
+
+
+
 
   async getFields(tableId: string) {
     const body = {
@@ -84,6 +155,31 @@ export default class Data {
       data: this.initData(data)
     };
     const url = `table/create`;
+    return request(`POST`, url, requestOptions);
+  }
+
+  async updateTable(tableId: string, data: NewTable){
+    const body = {
+      table_id: tableId,
+      table_data: {table_name: data.table_name, visibility: data.visibility}
+    };
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(body)
+    };
+    const url = `table/update`;
+    return request(`POST`, url, requestOptions);
+  }
+
+  async deleteTable(tableId: string){
+    const body = {
+      table_id: tableId,
+    };
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(body)
+    };
+    const url = `table/delete`;
     return request(`POST`, url, requestOptions);
   }
 
@@ -193,6 +289,20 @@ export default class Data {
       data: this.initData(body)
     };
     const url = `datapoint/update`;
+    return request(`POST`, url, requestOptions);
+  }
+
+
+  async deleteDataConnection(connectionId: string){
+    const body = {
+      id: connectionId,
+    }
+
+    const requestOptions: Options = {
+      ...this.options,
+      data: this.initData(body)
+    };
+    const url = `datapoint/delete`;
     return request(`POST`, url, requestOptions);
   }
 }

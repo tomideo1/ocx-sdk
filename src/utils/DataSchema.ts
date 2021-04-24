@@ -4,7 +4,7 @@ import { NewUser, LoginUser,NewGroup,NewRole } from "./ServiceSchema/AuthSchema"
 import { NewTable, NewHost, NewField, NewQuery, GridLoader, DataConnection } from "./ServiceSchema/DataSchema";
 import { ProfileType, ProfileFields, ProfileRecords, ProfileData } from "./ServiceSchema/ProfileSchema";
 import { NewRequest } from './ServiceSchema/AccessSchema';
-import { NewDomain, SubDomain } from './ServiceSchema/DomainSchema';
+import { NewDomain, DomainInvitee,DomainGroup,DomainPermissions  } from './ServiceSchema/DomainSchema';
 
 
 export interface Options extends AxiosRequestConfig {
@@ -24,5 +24,5 @@ export {
   NewHost, NewField, NewTable,NewQuery,GridLoader,DataConnection,
   ProfileFields, ProfileData, ProfileRecords, ProfileType,
   NewRequest,
-  NewDomain,SubDomain
+  NewDomain,DomainInvitee,DomainGroup,DomainPermissions
 };

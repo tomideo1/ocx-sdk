@@ -10,7 +10,8 @@ const newUser =   {
     "lastname": "soke",
     "profile_id": 1,
     "gender": "male",
-    "role" : "1",
+    "role_id" : "1",
+    "group_id" : "1",
     "phone": "0805423789"
 };
 
