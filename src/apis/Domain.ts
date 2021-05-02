@@ -1,4 +1,4 @@
-import { NewDomain, DomainPermissions,DomainGroup,DomainInvitee, Options } from './../utils/DataSchema';
+import { NewDomain, DomainPermissions,DomainGroup,DomainInvitee, Options } from '../utils/DataSchema';
 import request from '../utils/requests';
 
 export default class Domain {
@@ -121,7 +121,7 @@ export default class Domain {
     }
 
 
-    async  deleteDomainNode(domainInviteId: string){
+    async  deleteDomainInvite(domainInviteId: string){
         const requestOptions: Options = {
             ...this.options,
         };
@@ -161,7 +161,7 @@ export default class Domain {
     }
 
 
-    async  updateDomainGroup(domainGroupId: string, data: DomainInvitee){
+    async  updateDomainGroup(domainGroupId: string, data: DomainGroup){
         const requestOptions: Options = {
             ...this.options,
             data: this.initData(data)

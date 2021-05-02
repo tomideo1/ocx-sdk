@@ -21,7 +21,7 @@ export interface LoginUser {
 
 export interface NewGroup {
   name?:string,
-  slug?:string
+  description?:string
 }
 
 export interface NewRole {

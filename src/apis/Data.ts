@@ -92,18 +92,7 @@ export default class Data {
     return request(`POST`, url, requestOptions);
   }
 
-  async retrieveFields(tableId: string){
-    const body = {
-      table_id: tableId,
-    };
-    const requestOptions: Options = {
-      ...this.options,
-      data: this.initData(body)
-    };
 
-    const url = `field/retrieve`;
-    return request(`POST`, url, requestOptions);
-  }
 
 
   async updateField(fieldId: string, data:NewField){

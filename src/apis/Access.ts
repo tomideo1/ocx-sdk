@@ -48,7 +48,7 @@ export default class Access {
       const requestOptions: Options = {
         ...this.options
       };
-      const url = `access/${this.options.version}/routes/view`;
+        const url = `access/${this.options.version}/routes/view`;
       return request(`GET`, url, requestOptions);
     }
 

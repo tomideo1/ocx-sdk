@@ -32,7 +32,7 @@ export default class Auth {
       data
     };
     const url = `auth/user/update/${userId}`;
-    return request(`POST`, url, requestOptions);
+    return request(`PATCH`, url, requestOptions);
   }
   async login(data: LoginUser) {
     data.client_id = parseInt(process.env.PASSPORT_CLIENT_ID as string,10) || parseInt(process.env.VUE_APP_PASSPORT_CLIENT_ID as string,10)
